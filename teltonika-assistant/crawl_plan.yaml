@@ -1,0 +1,31 @@
+# Plan de rastreo para el primer modelo. Los titulos de paginas son SUPOSICIONES
+# basadas en el patron de otros modelos; el --dry-run avisa cuales no existen.
+wiki:
+  source_name: teltonika-wiki
+  base_url: https://wiki.teltonika-gps.com
+  api_path: /api.php
+  user_agent: "TelematicsAssistantIngest/0.1 (contacto: CAMBIAR@tu-empresa.com)"
+  min_interval_seconds: 1.5
+  license_note: "Pendiente: confirmar permiso de uso comercial con Teltonika"
+
+model:
+  manufacturer: Teltonika
+  family: FMB
+  code: FMB920
+
+seed_pages:
+  - FMB920                     # pagina del modelo
+  - FMB920 Manual
+  - FMB920 Configuration
+  - FMB920 SMS/GPRS Commands   # puede no existir: la familia usa "FMB SMS/GPRS Commands"
+  - FMB SMS/GPRS Commands      # compartida por la familia (referenciada en el foro oficial)
+  - FMB setdigout
+  - Firmware versions
+  - Teltonika Configurator
+  - Universal Device Test Guide
+  - Frequently Asked Questions - FAQ
+
+follow_links:
+  prefixes: ["FMB920 ", "FMB "]   # solo enlaces del modelo y de la familia FMB
+  max_depth: 2
+  max_pages: 80
